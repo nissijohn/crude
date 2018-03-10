@@ -1,3 +1,4 @@
+<?php include 'header.php';?>
 <?php
 // Include config file
 require_once 'config.php';
@@ -96,6 +97,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 
                     // Retrieve individual field value
+                    
                     $name = $row["name"];
                     $address = $row["address"];
                     $salary = $row["salary"];
@@ -146,24 +148,45 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     </div>
                     <p>Please edit the input values and submit to update the record.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
+                       
+                       
+                       
+                        <div class="row">
                         <div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
-                            <label>Name</label>
-                            <input type="text" name="name" class="form-control" value="<?php echo $name; ?>">
-                            <span class="help-block"><?php echo $name_err;?></span>
+                            <div class="col-sm-3"> <label>Name</label>  </div>
+                           <div class="col-sm-8"> <input type="text" name="name" class="form-control" value="<?php echo $name; ?>">
+                            <span class="help-block"><?php echo $name_err;?></span>  </div>
                         </div>
+                            </div>
+                        
+                     
+                     
+                        
+                         <div class="row">
                         <div class="form-group <?php echo (!empty($address_err)) ? 'has-error' : ''; ?>">
-                            <label>Address</label>
-                            <textarea name="address" class="form-control"><?php echo $address; ?></textarea>
-                            <span class="help-block"><?php echo $address_err;?></span>
+                             <div class="col-sm-3"><label>Address</label>  </div>
+                             <div class="col-sm-8"><textarea name="address" class="form-control"><?php echo $address; ?></textarea>
+                            <span class="help-block"><?php echo $address_err;?></span>  </div>
                         </div>
+                             </div>
+                       
+                      
+                     
+                        
+                         <div class="row">
                         <div class="form-group <?php echo (!empty($salary_err)) ? 'has-error' : ''; ?>">
-                            <label>Salary</label>
-                            <input type="text" name="salary" class="form-control" value="<?php echo $salary; ?>">
-                            <span class="help-block"><?php echo $salary_err;?></span>
+                             <div class="col-sm-3"><label>Salary</label> </div>
+                             <div class="col-sm-8"><input type="text" name="salary" class="form-control" value="<?php echo $salary; ?>">
+                            <span class="help-block"><?php echo $salary_err;?></span>  </div>
                         </div>
+                              </div>
+                        
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
-                        <input type="submit" class="btn btn-primary" value="Submit">
-                        <a href="index.php" class="btn btn-default">Cancel</a>
+                        <div class="row">
+                           
+                        <input type="submit" class="btn btn-danger" value="Submit">
+                       <a href="index.php" class="btn btn-default">Cancel</a>
+                        </div>
                     </form>
                 </div>
             </div>        

@@ -1,3 +1,4 @@
+<?php include 'header.php';?>
 <?php
 // Check existence of id parameter before processing further
 if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
@@ -22,6 +23,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 
                 // Retrieve individual field value
+                $id= $row["id"];
                 $name = $row["name"];
                 $address = $row["address"];
                 $salary = $row["salary"];
@@ -68,19 +70,37 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                     <div class="page-header">
                         <h1>View Record</h1>
                     </div>
+                    <div class="row">
                     <div class="form-group">
-                        <label>Name</label>
-                        <p class="form-control-static"><?php echo $row["name"]; ?></p>
+                        <div class="col-sm-3"> <label>NAME</label></div>
+                        <div class="col-sm-8"> <input type="text" name="name" class="form-control"  disabled="true" value="<?php echo $name; ?>"></div>
+                        
                     </div>
+                        </div>
+                    <br/>
+                     <div class="row">
                     <div class="form-group">
-                        <label>Address</label>
-                        <p class="form-control-static"><?php echo $row["address"]; ?></p>
+                        <div class="col-sm-3"><label>ADDRESS</label></div>
+                        <div class="col-sm-8"><input type="text" name="name" class="form-control"  disabled="true" value="<?php echo $address; ?>"></div>
                     </div>
+                         </div>
+                    <br/>
+                      <div class="row">
                     <div class="form-group">
-                        <label>Salary</label>
-                        <p class="form-control-static"><?php echo $row["salary"]; ?></p>
+                        <div class="col-sm-3"><label>SALARY</label></div> 
+                        <div class="col-sm-8"><input type="text" name="name" class="form-control"  disabled="true" value="<?php echo $salary ; ?>"></div>
                     </div>
-                    <p><a href="index.php" class="btn btn-primary">Back</a></p>
+                          </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-sm-6">
+                    <a href="index.php" class="btn btn-danger">Back</a>
+                    </div>
+                        <div class="col-sm-6">
+                            <?php
+                            echo "<a href='update.php?id=" . $id . "' class='btn btn-danger'>Update</a>" ;
+                                    ?>
+                    </div>
                 </div>
             </div>        
         </div>
